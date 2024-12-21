@@ -36,11 +36,16 @@ nav {
   letter-spacing: 1px;
   font-weight: 500;
 }
-.nav-total-score span {
+.nav-total-score span > a {
+  text-decoration: none;
   font-size: 1.3rem;
   font-weight: 300;
   color: red;
   text-transform: none;
+  cursor: pointer;
+}
+.nav-total-score span:hover > a {
+  text-decoration: underline;
 }
 .nav-user {
   display: flex;
