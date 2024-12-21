@@ -2,7 +2,7 @@ const playBtn = document.getElementById('playBtn');
 const menu = document.querySelector('.menu');
 const container = document.querySelector('.container');
 
-// Global Variables
+// Zmienne Globalne
 const GRID_WIDTH = 5;
 const DEFAULT_SCORE = 3;
 const BONUS_SCORE = 15;
@@ -13,14 +13,14 @@ let itemFallTime = 1200;
 let enemySpawnTime = 1800;
 let bonusSpawnTime = 3500;
 
-// Start game button
+// Przycisk startu gry
 
 playBtn.addEventListener('click', () => {
   menu.style.display = 'none';
   startGame();
 });
 
-// Enemy Fall Function
+// Funkcja spadania przeciwników
 
 const enemyFallFunction = (gameOverCallback) => {
   for (let i = enemyCells.length - 1; i >= 0; i--) {
@@ -50,7 +50,7 @@ const enemyFallFunction = (gameOverCallback) => {
   }
 };
 
-// Random Enemy Spawn Function
+// Funkcja losowego pojawiania się przeciwników
 
 const randomEnemySpawnFunction = () => {
   const randomEnemySpawn = Math.floor(Math.random() * GRID_WIDTH);
@@ -61,7 +61,7 @@ const randomEnemySpawnFunction = () => {
   }
 };
 
-// Bonus Fall Function
+// Funkcja spadania bonusów
 
 const bonusFallFunction = () => {
   for (let i = enemyCells.length - 1; i >= 0; i--) {
@@ -84,7 +84,7 @@ const bonusFallFunction = () => {
   }
 };
 
-// Random Bonus Spawn Function
+// Funkcja losowego pojawiania się bonusu
 
 const randomBonusSpawnFunction = () => {
   const randomBonusSpawn = Math.floor(Math.random() * GRID_WIDTH);
@@ -95,24 +95,24 @@ const randomBonusSpawnFunction = () => {
   }
 };
 
-// Move player logic
+// Logika ruchu gracza
 
 const movePlayer = (player, playerCells, direction) => {
-  const currentCell = player.parentElement;
+  const currentCell = player.parentElement; // zwraca komorke playera
   const nextCell = direction === 'right'
     ? currentCell.nextElementSibling
     : currentCell.previousElementSibling;
 
   if (playerCells.includes(nextCell)) {
     nextCell.appendChild(player);
-    player.classList.toggle('player-rotate', direction === 'left');
+    player.classList.toggle('player-rotate', direction === 'left'); // sprawdza drugi warunek toggle
   }
 };
 
-// Start game function
+// Funkcja startu gry
 
 const startGame = () => {
-  // Remove existing container and create new game
+  // Usunięcie istniejącego container i stworzenie nowej gry
   container.remove();
   const wrapper = document.createElement('div');
   wrapper.classList.add('wrapper');
@@ -132,24 +132,22 @@ const startGame = () => {
 
   document.body.appendChild(wrapper);
 
-  // Initialize game cells
+  // Stworzenie komórek gry
   cells = Array.from(document.querySelectorAll('.cell'));
   enemyCells = cells.slice(0, 50);
   playerCells = cells.slice(50);
   playerCells[2].innerHTML = '<div class="player"></div>';
 
-  // Set intervals for enemy and bonus mechanics
+  // Ustawienie interwałów dla mechaniki przeciwników i bonusów
 
   const enemyFallInterval = setInterval(() => enemyFallFunction(handleGameOver), itemFallTime);
   const enemySpawnInterval = setInterval(randomEnemySpawnFunction, enemySpawnTime);
   const bonusFallInterval = setInterval(bonusFallFunction, itemFallTime);
   const bonusSpawnInterval = setInterval(randomBonusSpawnFunction, bonusSpawnTime);
 
-  // Initialize Score
-
   const scoreDisplay = document.getElementById('currScore');
 
-  // Go Back Button Functionality
+  // Funkcjonalność przycisku powrotu
 
   const goBackBtn = document.getElementById('goBack');
 
@@ -165,6 +163,8 @@ const startGame = () => {
     if (e.key === 'ArrowLeft') movePlayer(player, playerCells, 'left');
   };
 
+  // Wyczyszczenie interwałów
+
   const clearAllIntervals = () => {
     clearInterval(enemyFallInterval);
     clearInterval(bonusFallInterval);
@@ -172,6 +172,8 @@ const startGame = () => {
     clearInterval(bonusSpawnInterval);
     document.removeEventListener('keydown', handleKeydown);
   };
+
+  // Reset gry
 
   const resetGame = (wrapper, scoreDisplay) => {
     wrapper.remove();
