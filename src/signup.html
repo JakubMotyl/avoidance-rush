@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-name">
+      <a href="../index.html">Duck Game</a>
+    </div>
+    <div class="nav-total-score">
+      <p>Total Score: <span id="totalScore">0</span></p>
+    </div>
+    <div class="nav-user">
+      <a href="login.html" id="loginEl">Login</a>
+      <a href="signup.html" id="signUpEl">Sign Up</a>
+      <div class="nav-user-avatar">
+        <div class="user-isLogin">
+          <i class="fa-solid fa-x"></i>
+        </div>
+        <div class="user-isSignup" style="display: none;">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="login-container">
+    <form action="../backend/connect.php" method="post">
+      <div class="signUp">
+        <p>Sign Up</p>
+        <div class="form-box">
+          <label for="username">Username</label>
+          <input type="text" placeholder="Enter Username" required id="username" name="username">
+        </div>
+
+        <div class="form-box">
+          <label for="email">Email</label>
+          <input type="email" placeholder="Enter Email" required id="email" name="email">
+        </div>
+
+        <div class="form-box">
+          <label for="psw">Password</label>
+          <input type="password" placeholder="Enter Password" required id="psw" name="psw">
+        </div>
+
+        <div class="form-btn">
+          <button id="signUpBtn">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

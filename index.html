@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duck Game</title>
+  <link rel="stylesheet" href="src/style.css">
+  <script src="https://kit.fontawesome.com/80260855ff.js" crossorigin="anonymous"></script>
+  <script src="src/scripts/game.js" defer></script>
+</head>
+<body>
+  <nav>
+    <div class="nav-name">
+      <a href="index.html">Duck Game</a>
+    </div>
+    <div class="nav-total-score">
+      <p>Total Score: <span id="totalScore">0</span></p>
+    </div>
+    <div class="nav-user">
+      <a href="src/login.html" id="loginEl">Login</a>
+      <a href="src/signup.html" id="signUpEl">Sign Up</a>
+      <div class="nav-user-avatar">
+        <div class="user-isLogin">
+          <i class="fa-solid fa-x"></i>
+        </div>
+        <div class="user-isSignup" style="display: none;">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="menu">
+      <div class="menu-title">
+        <p>Duck Game</p>
+      </div>
+      <div class="menu-buttons">
+        <button id="playBtn">Play</button>
+        <button id="challModeBtn" class="not-ready">Challenge Mode</button>
+        <button id="godModeBtn" class="not-ready">God Mode</button>
+        <div class="small-buttons">
+          <button id="shopBtn" class="not-ready">Shop</button>
+          <button id="achieveBtn" class="not-ready">Achievements</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
