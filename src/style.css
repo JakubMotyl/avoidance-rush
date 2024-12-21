@@ -34,10 +34,13 @@ nav {
   font-size: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-weight: 500;
 }
 .nav-total-score span {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: red;
+  text-transform: none;
 }
 .nav-user {
   display: flex;
@@ -304,7 +307,7 @@ button.not-ready{
   outline: 0;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 .form-box input::placeholder {
   font-size: 0.8rem;
@@ -326,4 +329,11 @@ button.not-ready{
   font-size: 1rem;
   font-weight: 600;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.signUp button:hover,
+.login button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }

@@ -4,12 +4,14 @@ const container = document.querySelector('.container');
 
 // Global Variables
 const GRID_WIDTH = 5;
+const DEFAULT_SCORE = 3;
+const BONUS_SCORE = 15;
 let cells, enemyCells, playerCells;
 let startScore = 0;
 let score = 0;
-let itemFallTime = 1300;
-let enemySpawnTime = 2500;
-let bonusSpawnTime = 3800;
+let itemFallTime = 1200;
+let enemySpawnTime = 1800;
+let bonusSpawnTime = 3500;
 
 // Start game button
 
@@ -32,12 +34,12 @@ const enemyFallFunction = (gameOverCallback) => {
           return;
         }
         if (enemyCells.includes(nextCell)) {
-          if (!nextCell.querySelector('.bonus')) {
+          if (!nextCell.querySelector('.bonus') && !nextCell.querySelector('.enemy')) {
             nextCell.innerHTML = '<div class="enemy"></div>';
             cell.innerHTML = '';
           }
         } else {
-          score += 10;
+          score += DEFAULT_SCORE;
           document.getElementById('currScore').textContent = score;
           cell.innerHTML = '';
         }
@@ -52,8 +54,10 @@ const enemyFallFunction = (gameOverCallback) => {
 
 const randomEnemySpawnFunction = () => {
   const randomEnemySpawn = Math.floor(Math.random() * GRID_WIDTH);
-  if (!enemyCells[randomEnemySpawn].querySelector('.enemy')) {
-    enemyCells[randomEnemySpawn].innerHTML = '<div class="enemy"></div>';
+  const targetCell = enemyCells[randomEnemySpawn];
+
+  if (!targetCell.querySelector('.enemy') && !targetCell.querySelector('.bonus')) {
+    targetCell.innerHTML = '<div class="enemy"></div>';
   }
 };
 
@@ -67,20 +71,15 @@ const bonusFallFunction = () => {
     if (cell.querySelector('.bonus')) {
       if (nextCell) {
         if (nextCell.querySelector('.player')) {
-          score += 25;
+          score += BONUS_SCORE;
           document.getElementById('currScore').textContent = score;
-        }
-        if (enemyCells.includes(nextCell)) {
-          if (!nextCell.querySelector('.enemy')) {
-            nextCell.innerHTML = '<div class="bonus"></div>';
-            cell.innerHTML = '';
-          }
-        } else {
+        } else if (!nextCell.querySelector('.enemy') && !nextCell.querySelector('.bonus')){
+          nextCell.innerHTML = '<div class="bonus"></div>';
           cell.innerHTML = '';
         }
       } else {
         cell.innerHTML = '';
-      }
+        }
     }
   }
 };
@@ -89,8 +88,10 @@ const bonusFallFunction = () => {
 
 const randomBonusSpawnFunction = () => {
   const randomBonusSpawn = Math.floor(Math.random() * GRID_WIDTH);
-  if (!enemyCells[randomBonusSpawn].querySelector('.bonus')) {
-    enemyCells[randomBonusSpawn].innerHTML = '<div class="bonus"></div>';
+  const targetCell = enemyCells[randomBonusSpawn];
+
+  if (!targetCell.querySelector('.bonus') && !targetCell.querySelector('.enemy')) {
+    targetCell.innerHTML = '<div class="bonus"></div>';
   }
 };
 
