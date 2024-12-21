@@ -4,7 +4,7 @@ const container = document.querySelector('.container');
 
 // Zmienne Globalne
 const GRID_WIDTH = 5;
-const DEFAULT_SCORE = 3;
+const DEFAULT_SCORE = 2;
 const BONUS_SCORE = 15;
 let cells, enemyCells, playerCells;
 let startScore = 0;
@@ -72,9 +72,15 @@ const bonusFallFunction = () => {
       if (nextCell) {
         if (nextCell.querySelector('.player')) {
           score += BONUS_SCORE;
+          cell.innerHTML = ''
           document.getElementById('currScore').textContent = score;
-        } else if (!nextCell.querySelector('.enemy') && !nextCell.querySelector('.bonus')){
-          nextCell.innerHTML = '<div class="bonus"></div>';
+        } 
+        if (enemyCells.includes(nextCell)) {
+          if (!nextCell.querySelector('.enemy') && !nextCell.querySelector('.bonus')){
+            nextCell.innerHTML = '<div class="bonus"></div>';
+            cell.innerHTML = '';
+          }
+        } else {
           cell.innerHTML = '';
         }
       } else {
