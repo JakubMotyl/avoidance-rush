@@ -142,7 +142,7 @@ const startGame = () => {
   cells = Array.from(document.querySelectorAll('.cell'));
   enemyCells = cells.slice(0, 50);
   playerCells = cells.slice(50);
-  playerCells[2].innerHTML = '<div class="player"></div>';
+  playerCells[2].innerHTML = '<div class="player"></div>'; // Początkowa pozycja gracza
 
   // Ustawienie interwałów dla mechaniki przeciwników i bonusów
 
