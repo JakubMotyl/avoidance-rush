@@ -6,12 +6,12 @@ const container = document.querySelector('.container');
 const GRID_WIDTH = 5;
 const DEFAULT_SCORE = 2;
 const BONUS_SCORE = 15;
+const itemFallTime = 1200;
+const enemySpawnTime = 1800;
+const bonusSpawnTime = 3500;
 let cells, enemyCells, playerCells;
 let startScore = 0;
 let score = 0;
-let itemFallTime = 1200;
-let enemySpawnTime = 1800;
-let bonusSpawnTime = 3500;
 
 // Przycisk startu gry
 
