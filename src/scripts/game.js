@@ -6,7 +6,7 @@ const container = document.querySelector('.container');
 const GRID_WIDTH = 5;
 const DEFAULT_SCORE = 2;
 const BONUS_SCORE = 15;
-const itemFallTime = 1200;
+const itemFallTime = 600;
 const enemySpawnTime = 1800;
 const bonusSpawnTime = 3500;
 let cells, enemyCells, playerCells;
